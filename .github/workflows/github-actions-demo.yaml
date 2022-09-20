@@ -18,7 +18,11 @@ jobs:
         run: |
           python3 -m pip install -U pipenv
           pipenv --python /usr/bin/python3 install
-
+      - name: install Deps
+        run: |
+          python setup.py egg_info
+          pip install -r *.egg-info/requires.txt
+          rm -rf *.egg-info/
       - name: Test django ledger
         run: |
           pipenv --python /usr/bin/python3 run python3 manage.py migrate
