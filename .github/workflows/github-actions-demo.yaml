@@ -20,7 +20,7 @@ jobs:
           pipenv --python /usr/bin/python3 install
       - name: install Deps
         run: |
-          pipenv --python /usr/bin/python3 run python3 -m pip install -e .
+          pipenv --python /usr/bin/python3 run python3 setup.py install
       - name: Test django ledger
         run: |
           pipenv --python /usr/bin/python3 run python3 manage.py migrate
