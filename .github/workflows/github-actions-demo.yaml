@@ -10,6 +10,7 @@ jobs:
           repository: arrobalytics/django-ledger
       - name: install pipenv
         run: |
+          which python
           python -m pip install -U pipenv
           pipenv install
 
