@@ -8,9 +8,14 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: arrobalytics/django-ledger
+      - name: Check python version
+        run: |
+          python --version
+          which python
+          which python3
+
       - name: install pipenv
         run: |
-          which python
           python -m pip install -U pipenv
           pipenv install
 
