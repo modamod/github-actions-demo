@@ -16,14 +16,14 @@ jobs:
 
       - name: install pipenv
         run: |
-          python -m pip install -U pipenv
+          python3 -m pip install -U pipenv
           pipenv install
 
       - name: Test django ledger
         run: |
-          pipenv run python manage.py migrate
-          pipenv run python manage.py createsuperuser
-          pipenv run python manage.py test django_ledger
+          pipenv run python3 manage.py migrate
+          pipenv run python3 manage.py createsuperuser
+          pipenv run python3 manage.py test django_ledger
 
       - name: List files in the repository
         run: |
