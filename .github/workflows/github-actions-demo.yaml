@@ -1,0 +1,33 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out my other private repo
+        uses: actions/checkout@master
+        with:
+          repository: arrobalytics/django-ledger
+      - name: Check python version
+        run: |
+          python --version
+          which python
+          which python3
+
+      - name: install pipenv
+        run: |
+          python3 -m pip install -U pipenv
+          pipenv --python /usr/bin/python3 install
+      - name: install Deps
+        run: |
+          pipenv --python /usr/bin/python3 run python3 setup.py install
+      - name: Test django ledger
+        run: |
+          pipenv --python /usr/bin/python3 run python3 manage.py migrate
+          pipenv --python /usr/bin/python3 run python3 manage.py createsuperuser
+          pipenv --python /usr/bin/python3 run python3 manage.py test django_ledger
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
