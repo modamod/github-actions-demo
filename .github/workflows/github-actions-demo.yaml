@@ -20,6 +20,8 @@ jobs:
           pipenv --python /usr/bin/python3 install
       - name: install Deps
         run: |
+          pwd
+          ls ./
           pipenv --python /usr/bin/python3 run setup.py egg_info
           pipenv --python /usr/bin/python3 run python3 -m pip install -r *.egg-info/requires.txt
           rm -rf *.egg-info/
